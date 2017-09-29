@@ -54,14 +54,14 @@ public class Main {
             );
         });
 
-        get("/template/:template", (req, res) -> {
+        get("/template", (req, res) -> {
             StringWriter writer = new StringWriter();
             try {
-                Template formTemplate = configuration.getTemplate(req.params(":template"));
+                Template formTemplate = configuration.getTemplate(req.queryParams("id"));
                 formTemplate.process(null, writer);
             } catch (Exception e) {
                 logger.error(String.format("Error processing template %s. Does it exist? " +
-                        "Check your template syntax?", req.params(":template")));
+                        "Check your template syntax?", req.queryParams("id")));
                 Spark.halt(500);
             }
 
