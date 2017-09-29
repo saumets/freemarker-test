@@ -36,15 +36,14 @@ public class Main {
             System.exit(0);
         }
 
-        File testingFolder = new File(System.getenv("TEST_RESOURCE_PATH"));
-        staticFiles.externalLocation(testingFolder.getName());
+        File templateFolder = new File(System.getenv("TEST_RESOURCE_PATH"));
+        staticFiles.externalLocation(templateFolder.getName());
 
         final Configuration configuration = new Configuration(new Version(2, 3, 26));
-        configuration.setDirectoryForTemplateLoading(testingFolder);
+        configuration.setDirectoryForTemplateLoading(templateFolder);
 
         get("/", (req, res) -> {
-            // File folder = new File(externalTestingPath);
-            File[] files = testingFolder.listFiles(Main.filterByFileType("ftl"));
+            File[] files = templateFolder.listFiles(Main.filterByFileType("ftl"));
 
             Map<String, Object> model = new HashMap<>();
             model.put("template_files", files);
