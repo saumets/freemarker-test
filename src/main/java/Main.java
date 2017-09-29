@@ -1,21 +1,20 @@
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.io.File;
-import java.io.StringWriter;
-
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static spark.Spark.*;
 import spark.ModelAndView;
 import spark.Spark;
 import spark.template.freemarker.FreeMarkerEngine;
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.Version;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+import static spark.Spark.*;
 
 public class Main {
     final static Logger logger = LoggerFactory.getLogger(Main.class);
@@ -30,6 +29,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
+        port(8000);
+
         if (System.getenv("TEST_RESOURCE_PATH") == null) {
             logger.error("TEST_RESOURCE_PATH environment variable is not configured. Bailing out!");
             System.exit(0);
