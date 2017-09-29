@@ -1,0 +1,10 @@
+# Defines the local environment configuration for our application
+# See: DOCKER.md
+
+version: '3'
+services:
+  freemarker-test:
+    container_name: freemarker-test
+    build: .
+    ports:
+      - '8000:8000'
