@@ -18,9 +18,9 @@
 </header>
 <hr>
 <fieldset class="ft_fieldset">
-    <form>
+    <form action="/template" method="get">
         <label for="templates">Choose a template:</label>
-        <select id="templates">
+        <select id="templates" name="id">
             <#list template_files as file>
                 <option value="${file.getName()}">${file.getName()}</option>
             </#list>
