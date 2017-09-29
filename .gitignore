@@ -2,3 +2,5 @@
 *.iml
 *.swp
 .DS_Store
+target/
+templates/
